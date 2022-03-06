@@ -1,8 +1,11 @@
 /**
  * Read web server data and analyse hourly access patterns.
  * 
- * @author David J. Barnes and Michael Kölling.
- * @version    2016.02.29
+ * @author David J. Barnes and Michael Kölling. (original)
+ * @version    2016.02.29 (original)
+ * 
+ * @author Max Micheller
+ * @version 3/6/2022
  */
 public class LogAnalyzer
 {
@@ -13,6 +16,7 @@ public class LogAnalyzer
 
     /**
      * Create an object to analyze hourly web accesses.
+     * @param hourCounts is the amount of hours in a day
      */
     public LogAnalyzer()
     { 
@@ -20,7 +24,7 @@ public class LogAnalyzer
         // access counts.
         hourCounts = new int[24];
         // Create the reader to obtain the data.
-        reader = new LogfileReader("demo.log");
+        reader = new LogfileReader("weblog.txt");
     }
 
     /**
@@ -43,15 +47,29 @@ public class LogAnalyzer
     public void printHourlyCounts()
     {
         System.out.println("Hr: Count");
-        for(int hour = 0; hour < hourCounts.length; hour++) {
-            System.out.println(hour + ": " + hourCounts[hour]);
-        }
+        //  for(int hour = 0; hour < hourCounts.length; hour++) {
+        //     System.out.println(hour + ": " + hourCounts[hour]);
+        //  }
         
+        //replaced the for loop with a while loop as per homework 7.10
         int hour = 0;
         while (hour < hourCounts.length){
             System.out.println(hour + ": " + hourCounts[hour]);
             hour++;
         }
+    }
+    
+    /**
+     * Return the number of accesses recorded in the log file.
+     */
+    public int numberOfAccesses(){
+        int total = 0;
+        int hour = 0;
+        while (hour < hourCounts.length){
+            total += hourCounts[hour];
+            hour++;
+        }
+        return total;
     }
     
     /**
