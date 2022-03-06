@@ -102,4 +102,20 @@ public class LogAnalyzer
         }   
         return busiestHour;
     }
+    
+    /**
+     * Returns the busiest Hour in a year (weblog adjusted to a year of hours)
+     */
+    public int quietestHour(){
+        int hourx = 0;
+        int quietest = hourCounts[hourx];
+        int quietestHour = 50;
+        for (int hour = 0; hour < hourCounts.length;hour++){
+            if (quietest > hourCounts[hour]){
+                quietest = hourCounts[hour];
+                quietestHour = hour;
+            }
+        }   
+        return quietestHour;
+    }
 }
