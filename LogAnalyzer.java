@@ -61,4 +61,13 @@ public class LogAnalyzer
     {
         reader.printData();
     }
+    
+    /**
+     * Takes the name of the log file to be analyzed
+     */
+    public void fileReader(String logFile){
+        LogfileReader read = new LogfileReader(logFile);
+        read.printData();
+    }
+    
 }
