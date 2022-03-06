@@ -88,4 +88,18 @@ public class LogAnalyzer
         read.printData();
     }
     
+    /**
+     * Returns the busiest Hour in a year (weblog adjusted to a year of hours)
+     */
+    public int busiestHour(){
+        int busiest = 0;
+        int busiestHour = 50;
+        for (int hour = 0; hour < hourCounts.length;hour++){
+            if (busiest < hourCounts[hour]){
+                busiest = hourCounts[hour];
+                busiestHour = hour;
+            }
+        }   
+        return busiestHour;
+    }
 }
